@@ -9,6 +9,11 @@ function updateProgress() {
   const total = stageInputs.length;
   const percentage = total ? (complete / total) * 100 : 0;
 
+  stageInputs.forEach((input) => {
+    input.closest(".stage").querySelector(".stage-state").textContent = input.checked
+      ? "ГОТОВО"
+      : "В ПЛАНЕ";
+  });
   progressCount.textContent = `${complete} / ${total}`;
   progressFill.style.width = `${percentage}%`;
   progressBar.setAttribute("aria-valuenow", String(complete));
